@@ -1,0 +1,22 @@
+#!/bin/bash
+rm abbbabaaaabbabb_plot_both_fringes.ps
+./mult -plot abbbabaaaabbabb 50 datax 1
+./mult -plot baaababbbbaabaa 50 datay 1
+gnuplot << EOF
+set terminal postscript
+set output 'abbbabaaaabbabb_plot_both_fringes.ps'
+set xrange [0.00: 1] 
+set xtics 0,0.1,1
+set xtics rotate nomirror
+set xtics font "Times-Roman, 8"
+set ytics font "Times-Roman, 8"
+set ytics 0,0.1,1
+set yrange [0.00: 1] noreverse nowriteback
+se size square
+unset bars
+plot 'datax' using 1:(\$2) title "" with impulses lw 0.3, \
+     'datay' using (\$2/2):1:(\$2/2) notitle with xerror ps 0 lt 1 lw 0.3 lc rgb "#ff0000"
+EOF
+read -p "Press any key to continue... " -n1 -s
+evince abbbabaaaabbabb_plot_both_fringes.ps &
+exit 0
