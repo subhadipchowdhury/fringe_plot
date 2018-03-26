@@ -1,5 +1,5 @@
 # Fringe Plot
 
-Uses Gnuplot with given data points (datax, datay) to plot fringes of the Ziggurat
+fringe.py implements the stairstep algorithm. It can be also used to plot the fringe using matplotlib.
 
-Data points obtained using Stairstep Algorithm. 
+Alternately, given the datapoints (e.g. datax, datay), we can use Gnuplot. That code is in fancyplot.
